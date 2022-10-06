@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Query Lists Popup (Pi-hole)
-// @version      0.1.0
+// @version      0.2.0
 // @license      MIT
 // @description  Adds buttons in the tables to query the lists in modal popup
 // @author       Jack'lul <jacklul.github.io>
@@ -23,8 +23,8 @@
         const tables = {
             '#domainsTable': {
                 'type': 'domains',
-                'selector': 'td:first-child > code',
-                'insert': 'td:first-child'
+                'selector': 'td:nth-child(2) > code',
+                'insert': 'td:nth-child(2)'
             },
             '#all-queries': {
                 'type': 'queries',
@@ -120,7 +120,7 @@
 
                 if ($(tr).find(' #query-lists-link').length === 0 && typeof domain !== 'undefined') {
                     if (page_type === 'domains') {
-                        const type = $(tr).find('td:nth-child(2) select option:selected').html();
+                        const type = $(tr).find('td:nth-child(3) select option:selected').html();
 
                         // Not for regex entries
                         if (type.indexOf('Regex') != -1) {
